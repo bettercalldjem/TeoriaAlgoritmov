@@ -1,0 +1,33 @@
+using System;
+using System.Linq;
+class Game {
+  static void Main() {
+      bool fail = false;
+    Console.WriteLine("Начинаем игру в слова! Введите свои имена: ");
+    string name1 = Console.ReadLine();
+    Console.WriteLine($"Привет, {name1}");
+    string name2 = Console.ReadLine();
+    Console.WriteLine($"И тебе привет, {name2}");
+    Console.WriteLine("Начинаем");
+    while (fail != true)
+    {
+        Console.WriteLine($"Очередь игрока {name1} ");
+        string word1 = Console.ReadLine();
+        char[] das = word1.ToCharArray();
+        char letter1 = das[^1];
+        Console.WriteLine($"Очередь игрока {name2}");
+        string word2 = Console.ReadLine();
+        char letter2 = word2[0];
+        if (letter2 == letter1)
+        {
+            Console.WriteLine("Все правильно, играем дальше!");
+        }
+        else {
+            fail = true;
+            Console.WriteLine("Все, кранты, пока");
+        }
+        
+    }
+  
+  }
+}
