@@ -1,0 +1,58 @@
+using System;
+using System.Collections.Generic;
+
+namespace WordGame
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Список использованных слов
+            var usedWords = new HashSet<string>();
+
+            // Ход первого игрока
+            Console.WriteLine("Ход первого игрока:");
+            var word1 = Console.ReadLine();
+
+            // Проверка слова первого игрока
+            if (word1.Length < 1)
+            {
+                Console.WriteLine("Слово должно содержать хотя бы одну букву!");
+                return;
+            }
+            else if (usedWords.Contains(word1))
+            {
+                Console.WriteLine("Это слово уже было использовано!");
+                return;
+            }
+
+            // Ход второго игрока
+            Console.WriteLine("Ход второго игрока:");
+            var word2 = Console.ReadLine();
+
+            // Проверка слова второго игрока
+            if (word2.Length < 1)
+            {
+                Console.WriteLine("Слово должно содержать хотя бы одну букву!");
+                return;
+            }
+            else if (usedWords.Contains(word2))
+            {
+                Console.WriteLine("Это слово уже было использовано!");
+                return;
+            }
+            else if (!word2.StartsWith(word1.Last().ToString()))
+            {
+                Console.WriteLine("Слово должно начинаться с последней буквы предыдущего слова!");
+                return;
+            }
+
+            // Добавление использованных слов в список
+            usedWords.Add(word1);
+            usedWords.Add(word2);
+
+            // Определение победителя (пока не реализовано)
+            Console.WriteLine("Победитель будет определен позже!");
+        }
+    }
+}
