@@ -1,45 +1,89 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-namespace WordGame
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            var usedWords = new HashSet<string>();
-            Console.WriteLine("Ход первого игрока:");
-            var word1 = Console.ReadLine();
-            if (word1.Length < 1)
-            {
-                Console.WriteLine("Слово должно содержать хотя бы одну букву!");
-                return;
-            }
-            else if (usedWords.Contains(word1))
-            {
-                Console.WriteLine("Это слово уже было использовано!");
-                return;
-            }
-            Console.WriteLine("Ход второго игрока:");
-            var word2 = Console.ReadLine();
-            if (word2.Length < 1)
-            {
-                Console.WriteLine("Слово должно содержать хотя бы одну букву!");
-                return;
-            }
-            else if (usedWords.Contains(word2))
-            {
-                Console.WriteLine("Это слово уже было использовано!");
-                return;
-            }
-            else if (!word2.StartsWith(word1.Last().ToString()))
-            {
-                Console.WriteLine("Слово должно начинаться с последней буквы предыдущего слова!");
-                return;
-            }
-            usedWords.Add(word1);
-            usedWords.Add(word2);
-            Console.WriteLine("Победитель будет определен позже!");
-        }
-    }
+
+using System.Collections.Generic; 
+using System; 
+ 
+class HelloWorld 
+{ 
+    static void Main() 
+    { 
+        List<string> wordsUsed = new List<string>(); 
+        string word1 = ""; 
+        Console.WriteLine("Напишите ваше слово если хотите сдаться пишите 1  либо поражение"); 
+        string word2 = Console.ReadLine(); 
+        wordsUsed.Add(word2); 
+        int lastword = word2.Length - 1; 
+        bool proverka = true; 
+        bool gamer = true; 
+        if (word2 == "поражение" || word2 == "1") 
+        { 
+            Console.WriteLine("Игра окончена"); 
+        } 
+        else 
+        { 
+            while (true) 
+            { 
+                if (!gamer) 
+                { 
+                    Console.WriteLine("Напишите ваше слово игрок 1"); 
+                    word1 = Console.ReadLine(); 
+                    gamer = true; 
+                } 
+                else if (gamer) 
+                { 
+                    Console.WriteLine("Напишите ваше слово игрок 2"); 
+                    word1 = Console.ReadLine(); 
+                    gamer = false; 
+                } 
+                if (word1 == "поражение" || word1 == "1") 
+                { 
+                    Console.WriteLine("Игра окончена"); 
+                    if(!gamer){ 
+                        Console.WriteLine("Победил игрок 1"); 
+                    } 
+                    else 
+                    { 
+                        Console.WriteLine("Победил игрок 2"); 
+                    } 
+                    break; 
+                } 
+                foreach (string slov in wordsUsed) 
+                { 
+                    if (slov == word1) 
+                    { 
+                        Console.WriteLine("Такое слово уже было"); 
+                        gamer = !gamer; 
+                        proverka = false; 
+                        break; 
+                    } 
+                    else 
+                    { 
+                        proverka = true; 
+                    } 
+                } 
+                if (proverka == true) 
+                { 
+                    lastword = word2.Length - 1; 
+                    if (word2[lastword] == 'ь' || word2[lastword] == 'ъ') 
+                    { 
+                        lastword = word2.Length - 2; 
+                    } 
+                    else 
+                    { 
+                        lastword = word2.Length - 1; 
+                    } 
+                    if (word1[0] == word2[lastword]) 
+                    { 
+                        word2 = word1; 
+                        Console.WriteLine("Слово подходит"); 
+                        wordsUsed.Add(word1); 
+                    } 
+                    else 
+                    { 
+                        Console.WriteLine("Слово не подходит на полседнюю букву"); 
+                        gamer = !gamer; 
+                    } 
+                } 
+            } 
+        } 
+    } 
 }
