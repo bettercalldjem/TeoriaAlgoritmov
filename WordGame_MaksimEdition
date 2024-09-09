@@ -7,13 +7,13 @@ class HelloWorld
     { 
         List<string> wordsUsed = new List<string>(); 
         string word1 = ""; 
-        Console.WriteLine("Напишите ваше слово, если хотите сдаться пишите 1  либо поражение"); 
+        Console.WriteLine("Напишите ваше слово, если хотите сдаться пишите 1"); 
         string word2 = Console.ReadLine(); 
         wordsUsed.Add(word2); 
         int lastword = word2.Length - 1; 
         bool Check = true; 
         bool Game = true; 
-        if (word2 == "поражение" || word2 == "1") 
+        if (word2 == "1") 
         { 
             Console.WriteLine("Игра окончена"); 
         } 
@@ -33,10 +33,11 @@ class HelloWorld
                     word1 = Console.ReadLine(); 
                     Game = false; 
                 } 
-                if (word1 == "поражение" || word1 == "1") 
+                if (word1 == "1") 
                 { 
                     Console.WriteLine("Игра окончена"); 
-                    if(!Game){ 
+                    if(!Game)
+                    { 
                         Console.WriteLine("Победил игрок 1"); 
                     } 
                     else 
@@ -86,3 +87,21 @@ class HelloWorld
         } 
     } 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
