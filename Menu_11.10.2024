@@ -1,0 +1,293 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace Menu
+{
+    class Dish
+    {
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public double Price { get; set; }
+        public List<string> Ingredients { get; set; }
+        public List<string> Allergens { get; set; }
+        public int Calories { get; set; }
+        public int EnergyValue { get; set; }
+        public List<string> Variations { get; set; }
+
+        public Dish(string name, string description, double price, List<string> ingredients, List<string> allergens, int calories, int energyValue, List<string> variations)
+        {
+            Name = name;
+            Description = description;
+            Price = price;
+            Ingredients = ingredients;
+            Allergens = allergens;
+            Calories = calories;
+            EnergyValue = energyValue;
+            Variations = variations;
+        }
+    }
+
+    class Program
+    {
+        static List<Dish> menu = new List<Dish>()
+        {
+            new Dish("Наггетсы", "Сочные куриные наггетсы.", 140,
+                new List<string> { "Куриное филе", "Панировка", "Масло растительное" },
+                new List<string> { "Глютен", "Соя" }, 250, 120, new List<string> { "Обычный"}),
+            new Dish("Крылья", "Хрустящие куриные крылья.", 170,
+                new List<string> { "Куриные крылья", "Панировка", "Масло растительное" },
+                new List<string> { "Глютен", "Соя" }, 300, 150, new List<string> {"Острый" }),
+            new Dish("Чизбургер", "Сочный бургер с говяжьей котлетой, сыром, луком, маринованными огурцами и кетчупом.", 200,
+                new List<string> { "Говяжья котлета", "Сыр", "Лук", "Огурцы маринованные", "Кетчуп", "Булочка" },
+                new List<string> { "Глютен", "Молоко", "Соя" }, 500, 250, new List<string> { "Обычный"}),
+             new Dish("Чизбургер", "Сочный бургер с говяжьей котлетой, сыром, луком, маринованными огурцами и кетчупом.", 200,
+                new List<string> { "Говяжья котлета", "Сыр", "Лук", "Огурцы маринованные", "Кетчуп", "Булочка" },
+                new List<string> { "Глютен", "Молоко", "Соя" }, 500, 250, new List<string> {"Острый" }),
+            new Dish("Твистер", "Куриное филе, завернутое в лепешку с салатом, помидорами, луком и соусом.", 180,
+                new List<string> { "Куриное филе", "Салат", "Помидоры", "Лук", "Соус", "Лепешка" },
+                new List<string> { "Глютен", "Молоко", "Соя" }, 450, 200, new List<string> { "Обычный"}),
+            new Dish("Твистер", "Куриное филе, завернутое в лепешку с салатом, помидорами, луком и соусом.", 180,
+                new List<string> { "Куриное филе", "Салат", "Помидоры", "Лук", "Соус", "Лепешка" },
+                new List<string> { "Глютен", "Молоко", "Соя" }, 450, 200, new List<string> {"Острый" }),
+            new Dish("Картошка фри", "Хрустящая картошка фри.", 80,
+                new List<string> { "Картофель", "Масло растительное" },
+                new List<string> { "Крахмал" }, 350, 180, new List<string> { "Обычный"}),
+            new Dish("Картошка фри", "Хрустящая картошка фри.", 80,
+                new List<string> { "Картофель", "Масло растительное" },
+                new List<string> { "Крахмал" }, 350, 180, new List<string> {"По-деревенски" }),
+            new Dish("Coca-Cola", "Классический газированный напиток.", 100,
+                new List<string> { "Вода", "Сахар", "Карамель", "Кофеин" },
+                new List<string> { "Глютен" }, 150, 80, new List<string> { "Со льдом" }),
+             new Dish("Coca-Cola", "Классический газированный напиток.", 100,
+                new List<string> { "Вода", "Сахар", "Карамель", "Кофеин" },
+                new List<string> { "Глютен" }, 150, 80, new List<string> { "Без льда"}),
+            new Dish("Фанта", "Газированный напиток со вкусом апельсина.", 100,
+                new List<string> { "Вода", "Сахар", "Ароматизаторы", "Кофеин" },
+                new List<string> { "Глютен" }, 150, 80, new List<string> { "Без льда" }),
+               new Dish("Фанта", "Газированный напиток со вкусом апельсина.", 100,
+                new List<string> { "Вода", "Сахар", "Ароматизаторы", "Кофеин" },
+                new List<string> { "Глютен" }, 150, 80, new List<string> { "Со льдом" }),
+            new Dish("Сандэй", "Вкусный десерт с мороженым, шоколадом и фруктами.", 120,
+                new List<string> { "Мороженое", "Шоколад", "Фрукты" },
+                new List<string> { "Молоко", "Глютен", "Соя" }, 400, 200, new List<string> {"Обычный" }),
+                        new Dish("Сандэй", "Вкусный десерт с мороженым, шоколадом и фруктами.", 120,
+                new List<string> { "Мороженое", "Шоколад", "Фрукты" },
+                new List<string> { "Молоко", "Глютен", "Соя" }, 400, 200, new List<string> { "С вишней" }),
+            new Dish("Пирожок с начинкой", "Свежий пирожок с начинкой на выбор.", 50,
+                new List<string> { "Тесто", "Начинка" },
+                new List<string> { "Глютен" }, 300, 150, new List<string> {"С вишней"}),
+            new Dish("Пирожок с начинкой", "Свежий пирожок с начинкой на выбор.", 50,
+                new List<string> { "Тесто", "Начинка" },
+                new List<string> { "Глютен" }, 300, 150, new List<string> {"С клубникой" }),
+            new Dish("Ролл с креветками", "Вкусненький ролл с морепродуктами креветками", 350,
+                new List<string> { "Креветки", "Салат", "Помидор", "Сыр", "Лепешка" },
+                new List<string> { "Глютен", "Креветки", "Морепродукты" }, 300, 150, new List<string> { "Обычный"}),
+             new Dish("Ролл с креветками", "Вкусненький ролл с морепродуктами креветками", 350,
+                new List<string> { "Креветки", "Салат", "Помидор", "Сыр", "Лепешка" },
+                new List<string> { "Глютен", "Креветки", "Морепродукты" }, 300, 150, new List<string> {"Острый" }),
+        };
+
+        static void Main(string[] args)
+        {
+            List<Dish> filteredMenu = new List<Dish>(menu);
+            while (true)
+            {
+                Console.WriteLine("----- Меню KFC -----");
+                PrintMenu(filteredMenu);
+
+                Console.WriteLine("\nФильтры:");
+                Console.WriteLine("1. По цене");
+                Console.WriteLine("2. По продуктам");
+                Console.WriteLine("3. По аллергии");
+                Console.WriteLine("4. По калориям/энергетической ценности");
+                Console.WriteLine("5. Сбросить фильтры");
+                Console.WriteLine("6. Показать блюда до заданной цены");
+                Console.WriteLine("7. По варианту");
+                Console.WriteLine("8. Выход");
+
+                int choice = GetIntInput("Введите номер фильтра: ");
+
+                switch (choice)
+                {
+                    case 1:
+                        filteredMenu = FilterByPrice(menu);
+                        break;
+                    case 2:
+                        filteredMenu = FilterByIngredients(menu);
+                        break;
+                    case 3:
+                        filteredMenu = FilterByAllergens(menu);
+                        break;
+                    case 4:
+                        filteredMenu = FilterByCaloriesOrEnergy(menu);
+                        break;
+                    case 5:
+                        filteredMenu = new List<Dish>(menu);
+                        break;
+                    case 6:
+                        ShowDishesUnderPrice(menu);
+                        break;
+                    case 7:
+                        filteredMenu = FilterByVariants(menu);
+                        break;
+                    case 8:
+                        Console.WriteLine("До свидания!");
+                        return;
+                    default:
+                        Console.WriteLine("Некорректный ввод.");
+                        break;
+                }
+            }
+        }
+        static List<Dish> FilterByVariants(List<Dish> dishes)
+        {
+            Console.WriteLine("Выберите вариант блюда");
+            string inputVariant = Console.ReadLine();
+            List<string> variations = inputVariant.Split(',').Select(s => s.Trim()).ToList();
+
+            return dishes.Where(d => d.Variations.Any(i => variations.Contains(i))).ToList();
+        }
+        static void PrintMenu(List<Dish> dishes)
+        {
+            if (dishes.Count == 0)
+            {
+                Console.WriteLine("Блюда не найдены.");
+                return;
+            }
+
+            foreach (Dish dish in dishes)
+            {
+                Console.WriteLine($"\n{dish.Name} ({dish.Price} руб.)");
+                Console.WriteLine($"{dish.Description}");
+                Console.WriteLine($"Ингредиенты: {string.Join(", ", dish.Ingredients)}");
+                Console.WriteLine($"Аллергены: {string.Join(", ", dish.Allergens)}");
+                Console.WriteLine($"Калории: {dish.Calories}");
+                Console.WriteLine($"Энергетическая ценность: {dish.EnergyValue} ккал");
+                if (dish.Variations.Count > 0)
+                {
+                    Console.WriteLine($"Варианты: {string.Join(", ", dish.Variations)}");
+                }
+            }
+        }
+
+        static List<Dish> FilterByPrice(List<Dish> dishes)
+        {
+            double minPrice = GetDoubleInput("Введите минимальную цену: ");
+            double maxPrice = GetDoubleInput("Введите максимальную цену: ");
+
+            return dishes.Where(d => d.Price >= minPrice && d.Price <= maxPrice).ToList();
+        }
+
+        static List<Dish> FilterByIngredients(List<Dish> dishes)
+        {
+            Console.WriteLine("Введите ингредиенты (через запятую):");
+            string inputIngredients = Console.ReadLine();
+            List<string> ingredients = inputIngredients.Split(',').Select(s => s.Trim()).ToList();
+
+            return dishes.Where(d => d.Ingredients.Any(i => ingredients.Contains(i))).ToList();
+        }
+
+        static List<Dish> FilterByAllergens(List<Dish> dishes)
+        {
+            Console.WriteLine("Введите аллергены (через запятую):");
+            string inputAllergens = Console.ReadLine();
+            List<string> allergens = inputAllergens.Split(',').Select(s => s.Trim()).ToList();
+
+            return dishes.Where(d => !d.Allergens.Any(a => allergens.Contains(a))).ToList();
+        }
+
+        static List<Dish> FilterByCaloriesOrEnergy(List<Dish> dishes)
+        {
+            Console.WriteLine("1. По калориям");
+            Console.WriteLine("2. По энергетической ценности");
+
+            int choice = GetIntInput("Выберите вариант: ");
+
+            switch (choice)
+            {
+                case 1:
+                    return FilterByCalories(dishes);
+                case 2:
+                    return FilterByEnergyValue(dishes);
+                default:
+                    Console.WriteLine("Некорректный ввод.");
+                    return dishes;
+            }
+        }
+
+        static List<Dish> FilterByCalories(List<Dish> dishes)
+        {
+            int minCalories = GetIntInput("Введите минимальное количество калорий: ");
+            int maxCalories = GetIntInput("Введите максимальное количество калорий: ");
+
+            return dishes.Where(d => d.Calories >= minCalories && d.Calories <= maxCalories).ToList();
+        }
+
+        static List<Dish> FilterByEnergyValue(List<Dish> dishes)
+        {
+            int minEnergyValue = GetIntInput("Введите минимальную энергетическую ценность (ккал): ");
+            int maxEnergyValue = GetIntInput("Введите максимальную энергетическую ценность (ккал): ");
+
+            return dishes.Where(d => d.EnergyValue >= minEnergyValue && d.EnergyValue <= maxEnergyValue).ToList();
+        }
+
+        static void ShowDishesUnderPrice(List<Dish> dishes)
+        {
+            double budget = GetDoubleInput("Введите ваш бюджет: ");
+            var affordableDishes = new List<Dish>();
+            double totalSpent = 0;
+
+            foreach (Dish dish in dishes)
+            {
+                if (totalSpent + dish.Price <= budget)
+                {
+                    affordableDishes.Add(dish);
+                    totalSpent += dish.Price;
+                }
+            }
+
+            Console.WriteLine("\nДоступные блюда:");
+            if (affordableDishes.Count == 0)
+            {
+                Console.WriteLine("Нет доступных блюд в пределах вашего бюджета.");
+                return;
+            }
+
+            foreach (Dish dish in affordableDishes)
+            {
+                Console.WriteLine($"{dish.Name} - {dish.Price} руб.");
+            }
+
+            double remainingBudget = budget - totalSpent;
+            Console.WriteLine($"Общая стоимость: {totalSpent} руб.");
+            Console.WriteLine($"Остаток на счету: {remainingBudget} руб.");
+        }
+
+        static int GetIntInput(string message)
+        {
+            while (true)
+            {
+                Console.Write(message);
+                if (int.TryParse(Console.ReadLine(), out int result))
+                {
+                    return result;
+                }
+                Console.WriteLine("Некорректный ввод. Пожалуйста, введите число.");
+            }
+        }
+
+        static double GetDoubleInput(string message)
+        {
+            while (true)
+            {
+                Console.Write(message);
+                if (double.TryParse(Console.ReadLine(), out double result))
+                {
+                    return result;
+                }
+                Console.WriteLine("Некорректный ввод. Пожалуйста, введите число.");
+            }
+        }
+    }
+}
